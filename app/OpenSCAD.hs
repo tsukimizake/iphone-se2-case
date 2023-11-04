@@ -160,6 +160,7 @@ module OpenSCAD
     union,
     intersection,
     difference,
+    diff,
     minkowski,
     hull,
 
@@ -607,6 +608,9 @@ intersection = Intersection
 -- | The difference between two 'Model's.
 difference :: Vector v => Model v -> Model v -> Model v
 difference = Difference
+
+diff :: Vector v => Model v -> [Model v] -> Model v
+diff = foldl difference
 
 -- | The Minkowski sum of a list of 'Model's.
 minkowski :: Vector v => [Model v] -> Model v
