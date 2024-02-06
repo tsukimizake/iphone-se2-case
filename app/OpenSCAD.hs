@@ -160,7 +160,6 @@ module OpenSCAD
     union,
     intersection,
     difference,
-    diff,
     minkowski,
     hull,
 
@@ -609,9 +608,6 @@ intersection = Intersection
 difference :: Vector v => Model v -> Model v -> Model v
 difference = Difference
 
-diff :: Vector v => Model v -> [Model v] -> Model v
-diff = foldl difference
-
 -- | The Minkowski sum of a list of 'Model's.
 minkowski :: Vector v => [Model v] -> Model v
 minkowski = Minkowski
@@ -623,7 +619,7 @@ hull = Hull
 -- | 'render' does all the real work. It will walk the AST for a 'Model',
 -- returning an OpenSCAD program in a 'String'.
 render :: Vector v => Model v -> String
-render = show . PP.pretty
+render = ("$fs=0.01;\n" <>) . show . PP.pretty
 
 instance Vector v => PP.Pretty (Model v) where
   pretty =

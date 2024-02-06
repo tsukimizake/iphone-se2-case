@@ -1,14 +1,13 @@
 module Main where
 
-import OpenSCAD as OS
-import Prelude
 import Data.Function ((&))
+import OpenSCAD
+import PathExtrude (bezier3, pathExtrude)
+import Prelude
 
-
-sample :: OS.Model3d
-sample = OS.cube 11
-
+sample :: Model3d
+sample = cube 1 & pathExtrude (bezier3 (0, 0, 0) (0, 0, 20) (0, 10, -20) (0, 10, 0))
 
 main :: IO ()
 main = do
-  sample & OS.render & writeFile "product.scad"
+  sample & render & writeFile "product.scad"
