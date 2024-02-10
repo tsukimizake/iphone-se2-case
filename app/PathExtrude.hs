@@ -1,4 +1,4 @@
-module PathExtrude where
+module PathExtrude (pathExtrude, bezier3) where
 
 import Data.Foldable (Foldable (foldl'))
 import Data.Function ((&))

@@ -191,6 +191,9 @@ module OpenSCAD
     drawL,
     (#),
     module Colours,
+
+    -- ** helpers
+    with,
   )
 where
 
@@ -882,3 +885,10 @@ infixl 8 #
 
 (#) :: a -> (a -> c) -> c
 (#) = flip ($)
+
+-- | usage
+--
+--   sphere def 100
+--        & with intersection (box 100 100 100)
+with :: ([Model3d] -> Model3d) -> Model3d -> Model3d -> Model3d
+with f a b = f [a, b]
