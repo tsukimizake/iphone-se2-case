@@ -9,6 +9,9 @@ sample :: Model3d
 sample =
   v1
     `difference` overHangCutter
+    `difference` (box 46 40 10 & with minkowski (sphere 2 def) & translate (-23, 60, 0))
+    `difference` (box 40 11 10 & with minkowski (sphere 2 def) & translate (-70, -40.5, 0))
+    `difference` (box 40 34 10 & with minkowski (sphere 2 def) & translate (20, -52, 0))
 
 -- cube 1 & pathExtrude (bezier3 (0, 0, 0) (0, 0, 20) (0, 10, -20) (0, 10, 0))
 
